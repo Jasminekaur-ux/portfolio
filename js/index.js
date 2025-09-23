@@ -190,3 +190,19 @@ $(function(){
   $('.navigation-close').hover(cursorhover,cursor);
 
 })
+
+$(function(){
+  function setSkillProgressWidths(){
+    $('#skills .prog > div').each(function(){
+      var text = $(this).text().trim();
+      var match = text.match(/(\d+)\s*%/);
+      if(match){
+        var pct = parseInt(match[1],10);
+        if(isNaN(pct)) return;
+        if(pct < 0) pct = 0; if(pct > 100) pct = 100;
+        $(this).css('width', pct + '%');
+      }
+    });
+  }
+  setSkillProgressWidths();
+});
